@@ -6,6 +6,8 @@ document.addEventListener("DOMContentLoaded", function () {
     toggle.addEventListener("click", function () {
       var isOpen = links.classList.toggle("is-open");
       toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      toggle.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+      document.body.classList.toggle("menu-open", isOpen);
     });
 
     // Close the mobile menu after a link is chosen
@@ -14,6 +16,8 @@ document.addEventListener("DOMContentLoaded", function () {
         if (links.classList.contains("is-open")) {
           links.classList.remove("is-open");
           toggle.setAttribute("aria-expanded", "false");
+          toggle.setAttribute("aria-label", "Open menu");
+          document.body.classList.remove("menu-open");
         }
       });
     });
@@ -23,6 +27,8 @@ document.addEventListener("DOMContentLoaded", function () {
       if (e.key === "Escape" && links.classList.contains("is-open")) {
         links.classList.remove("is-open");
         toggle.setAttribute("aria-expanded", "false");
+        toggle.setAttribute("aria-label", "Open menu");
+        document.body.classList.remove("menu-open");
         toggle.focus();
       }
     });
